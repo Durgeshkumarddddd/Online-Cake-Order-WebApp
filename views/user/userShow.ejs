@@ -1,0 +1,38 @@
+<%- include('layouts/head.ejs'); %>
+
+    <body>
+        <div class="show-container">
+            <%- include('layouts/userNav.ejs', {userId: userId}); %>
+
+                <main>
+
+                    <img src="<%= product.image %>" alt="">
+                    <div class="detail">
+                        <h3 class="sp">
+                            <%= product.name %>
+                        </h3>
+                        <h5 class="sp">
+                            Category: <span>
+                                <%= product.category %>
+                            </span>
+                        </h5>
+                        <h5 class="sp">
+                            Description: <span>
+                                <%= product.description %>
+                            </span>
+                        </h5>
+                        <h4 class="sp">
+                            $ <%= product.price %>
+                        </h4>
+                    </div>
+                </main>
+                <div class="fun">
+                    <a href="/user/order/<%= product._id %>/<%= userId %>"
+                        style="background-color: rgba(14, 181, 14, 0.56);">Buy Now</a>
+                    <a href="/user/addToCart/<%= product._id %>/<%= userId %>" class="addMe">Add to Cart</a>
+                </div>
+        </div>
+        <%- include('layouts/footer.ejs') %>
+    </body>
+
+    </html>

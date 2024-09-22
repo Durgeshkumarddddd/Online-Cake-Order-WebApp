@@ -1,0 +1,67 @@
+<%- include('layouts/head.ejs'); %>
+
+    <body>
+        <div class="profile-container">
+        <%- include('layouts/userNav.ejs'); %>
+
+            <div class="main">
+                <div class="user-detail">
+                    <h4>Username: <span><%= user.username %></span></h4>
+                    <h4>Email ID: <%= user.email %></span></h4>
+                    <a href="/logout" class="logout">Log Out</a>
+                </div>
+                <div class="card">
+                    <a href="/user/orders"><span><i class="fa-solid fa-dolly"></i></span> Orders <span><i
+                                class="fa-solid fa-chevron-right"></i></span></a>
+                    <a href="#"><span><i class="fa-solid fa-ticket"></i></span> Coupons <span><i
+                                class="fa-solid fa-chevron-right"></i></span></a>
+                </div>
+                <div class="pay">
+                    <div class="pa1">
+                        <span><i class="fa-solid fa-credit-card e1"></i></span>
+                        <span>
+                            <h5>Payments & Currencies</h5>
+                            <p>View balance and save payment methods</p>
+                        </span>
+                    </div>
+                    <span><i class="fa-solid fa-chevron-down e2"></i></span>
+                </div>
+
+                <div class="pay">
+                    <div class="pa1">
+                        <span><i class="fa-solid fa-wallet e1"></i></span>
+                        <span>
+                            <h5>Earn & Redeem</h5>
+                            <p>Scan Coupons, view prizes and earn rewards</p>
+                        </span>
+                    </div>
+                    <span><i class="fa-solid fa-chevron-down e2"></i></span>
+                </div>
+
+                <div class="pay">
+                    <div class="pa1">
+                        <span><i class="fa-regular fa-pen-to-square e1"></i></span>
+                        <span>
+                            <h5>Manage Account</h5>
+                            <p>Manage your account and save address</p>
+                        </span>
+                    </div>
+                    <span><i class="fa-solid fa-chevron-down e2"></i></span>
+                </div>
+
+                <div class="pay">
+                    <div class="pa1">
+                        <span><i class="fa-solid fa-gear e1"></i></span>
+                        <span>
+                            <h5>Settings</h5>
+                            <p>Manage Notifications</p>
+                        </span>
+                    </div>
+                    <span><i class="fa-solid fa-chevron-down e2"></i></span>
+                </div>
+            </div>
+        </div>
+            <%- include('layouts/footer.ejs') %>
+    </body>
+
+    </html>

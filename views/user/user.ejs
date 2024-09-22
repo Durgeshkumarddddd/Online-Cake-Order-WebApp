@@ -1,0 +1,90 @@
+<%- include('layouts/head.ejs'); %>
+
+    <body>
+        <div class="main-container">
+            <%- include('layouts/userNav.ejs'); %>
+
+                <div class="swip">
+                    <%- include('layouts/swipper.ejs') %>
+                </div>
+                <h2 class="tage t1">Order your favorite cakes online and </h2>
+                <h2 class="tage t2">get them delivered to your doorstep!</h2>
+                <div class="filter">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle ft" type="button" data-bs-toggle="dropdown">
+                            Filter
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li class="rr"><a class="dropdown-item" href="#">By range</a></li>
+                            <li class="rr"><a class="dropdown-item" href="#">By Category</a></li>
+                            <li class="rr"><a class="dropdown-item" href="#">By Wheight</a></li>
+                        </ul>
+                    </div>
+                    <div class="range mv">
+                        <ul>
+                            <li> <a href="/filter/range?min=200&max=500">200 - 500 </a></li>
+                            <li> <a href="/filter/range?min=500&max=1000">500 - 1000 </a></li>
+                            <li> <a href="/filter/range?min=1000&max=1500">1000 - 1500 </a></li>
+                            <li> <a href="/filter/range?min=1500&max=2000">1500 - 2000 </a></li>
+                            <li> <a href="/filter/range?min=2000&max=40000"> Above 2000 </a> </li>
+                        </ul>
+                    </div>
+                    <div class="category mv">
+                        <ul>
+                            <li> <a href="/filter/categories?category=Chocolate">Chocolate Cake</a></li>
+                            <li> <a href="/filter/categories?category=Vanilla">Vanilla Cake</a></li>
+                            <li> <a href="/filter/categories?category=Red Velvet">Red Velvet Cake</a></li>
+                            <li> <a href="/filter/categories?category=Carrot">Carrot Cake</a></li>
+                            <li> <a href="/filter/categories?category=Cheesecake">Cheesecake</a></li>
+                            <li> <a href="/filter/categories?category=Fruit">Fruit Cake</a></li>
+                            <li> <a href="/filter/categories?category=Sponge">Sponge Cake</a></li>
+                            <li> <a href="/filter/categories?category=Black Forest">Black Forest Cake</a></li>
+                            <li> <a href="/filter/categories?category=Ice Cream">Ice Cream Cake</a></li>
+                            <li> <a href="/filter/categories?category=Pound">Pound Cake</a></li>
+                            <li> <a href="/filter/categories?category=Coffee">Coffee Cake</a></li>
+                            <li> <a href="/filter/categories?category=Angel Food">Angel Food Cake</a></li>
+                            <li> <a href="/filter/categories?category=Lemon">Lemon Cake</a></li>
+                            <li> <a href="/filter/categories?category=Marble">Marble Cake</a></li>
+                            <li> <a href="/filter/categories?category=Tiramisu">Tiramisu Cake</a></li>
+                            <li> <a href="/filter/categories?category=Vegetable">Vegetable Cake</a></li>
+                            <li> <a href="/filter/categories?category=Citrus">Citrus Cake</a></li>
+                            <li> <a href="/filter/categories?category=Nut">Nut Cake</a></li>
+                            <li> <a href="/user/filter/categories?category=Tropical">Tropical Cake</a></li>
+                            <li> <a href="/filter/categories?category=Tea">Tea Cake</a></li>
+                        </ul>
+                    </div>
+                    <div class="weight mv">
+                        <ul>
+                            <li> <a href="/filter/">500g - 1kg</a></li>
+                            <li> <a href="/filter/">1kg - 1.5kg</a></li>
+                            <li> <a href="/filter/">1.5kg - 2kg</a></li>
+                            <li> <a href="/filter/">2kg - 3kg</a></li>
+                            <li> <a href="/filter/">3kg - 5kg</a></li>
+                            <li> <a href="/filter/">above 5kg</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="all">
+                    <% all_products.forEach((product)=> {%>
+                        <a class="cake-card" href="http://localhost:3000/user/<%= userId %>/<%= product._id %>">
+                            <div class="image">
+                                <img src="<%= product.image %>" alt="">
+                            </div>
+                            <div class="p2">
+                                <h5 style="color: black;">
+                                    <%= product.name %>
+                                </h5>
+                                <h6>Category: <span>
+                                        <%= product.category %>
+                                    </span></h6>
+                                <h5 style="color: black;">$ <%= product.price %>
+                                </h5>
+                            </div>
+                        </a>
+                        <%}) %>
+                </div>
+        </div>
+        <%- include('layouts/footer.ejs') %>
+    </body>
+
+    </html>

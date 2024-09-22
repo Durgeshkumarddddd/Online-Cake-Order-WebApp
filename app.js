@@ -49,15 +49,21 @@ app.use((req, res, next)=>{
   res.locals.CurrUser = req.user;
   next();
 })
+// index page
+app.get('/', (req, res)=>{
+  res.send('Successfull created app')
+
+})
 // Home page 
-app.get('/',isLoggedIn, (req, res)=>{
-    res.render('admin/home.ejs')
+app.get('/home',isLoggedIn, (req, res)=>{
+   let registerAdmin = req.user;
+    res.render('admin/home.ejs',{registerAdmin})
 })   
 // create new Product
-app.get('/admin/:id/products/new',isLoggedIn, (req,res)=>{
+app.get('/admin/products/new',isLoggedIn, (req,res)=>{
   res.render('admin/new')    
 })
-   
+  
 // Save the new Product  
 app.post('/admin/:id/products/new', wrapAsync(async (req, res)=>{
   let  newProduct = await new Product(req.body.product)
@@ -68,13 +74,12 @@ app.post('/admin/:id/products/new', wrapAsync(async (req, res)=>{
   await newAdmin.save();
   console.log(newAdmin);
   req.flash('success','new product added')
-  let adminId = req.user._id ;
-  res.redirect('/admin/adminId/Products');    
+  res.redirect('/admin/Products');    
 
 }))
 
 // Show All Product
-app.get('/admin/:id/Products',isLoggedIn, wrapAsync(async(req,res)=>{
+app.get('/admin/Products',isLoggedIn, wrapAsync(async(req,res)=>{
   let {id} = req.params
   const AllProducts = await Product.find({owner : id});
   res.render('admin/allProducts',{AllProducts});
@@ -112,11 +117,11 @@ app.get('/admin/:id/products/:productId/show', wrapAsync(async(req, res)=>{
   res.render('admin/show', {product})
 }))
 // manage orders
-app.get('/admin/:id/manage', (req, res)=>{  
-  res.render('admin/manage');
+app.get('/admin/order', (req, res)=>{  
+  res.render('admin/manageOrder');
 })
 // information
-app.get('/admin/:id/info', (req, res)=>{
+app.get('/admin/info', (req, res)=>{
   res.render('admin/info');
 })
 // Register
@@ -127,14 +132,14 @@ app.get('/register', (req, res)=>{
 app.post('/register', wrapAsync(async(req, res)=>{
   let newAdmin = new Admin(req.body.register)
   const password = req.body.register.password ;
-  const registedAdmin = await Admin.register(newAdmin , password)
-  console.log(registedAdmin)
-  req.login(registedAdmin, (err)=>{
+  const registerAdmin = await Admin.register(newAdmin , password)
+  console.log(registerAdmin)
+  req.login(registerAdmin, (err)=>{
     if(err){
       return next(err);
     }
     req.flash("success","Registration Successfull Welcome!")
-    res.redirect('/admin/req.user._id')
+    res.render('admin/home.ejs',{registerAdmin})
   })
  
 }))
@@ -148,14 +153,15 @@ app.post('/login', passport.authenticate("local",{
     failureFlash : true,}),
  wrapAsync(async(req, res)=>{  
   req.flash("success", "Welcome back to Online cake order login user");
-  res.redirect('/') 
+  let registerAdmin = req.user    
+  res.render('admin/home',{registerAdmin}) 
   }))
   // Admin details 
   app.get('/admin/:id/details', isLoggedIn, (req, res) => {
     // res.status(200).json(req.user);  // req.user contains the logged-in admin details
     res.render()
   });
-
+  
   // logout function
   app.get('/logout', wrapAsync(async (req, res, next)=>{
     req.logout((err)=>{

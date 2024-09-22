@@ -1,0 +1,45 @@
+<%- include('layouts/head.ejs'); %>
+    <body>
+        <div class="order-main">
+        <%- include('layouts/userNav.ejs'); %>
+
+        <% let total=0 %>
+                <% orders.map(function (order){ %>
+                    <div class="cart">
+                        <div class="cart-deatail">
+                            <p class="p">Image</p>
+                            <div class="cart-image"><img src="<%= order.image %>" alt=""></div>
+                        </div>
+                        <div class="cart-detail">
+                            <p class="p">Product</p>
+                            <p>
+                                <%= order.name %>
+                            </p>
+
+                        </div>
+                        <div class="cart-detail">
+                            <p class="p">Price</p>
+                            <p>$ <%= order.price %>
+                            </p>
+
+                        </div>
+                        <div class="cart-detail">
+                            <p class="p">Quntity</p>
+                            <p><span id="c-value"><%= order.quantity %></span>
+                            </p>
+
+                        </div>
+                        <div class="cart-detail">
+                            <p class="p">Cancel order</p>
+                            <a class="rem" href="/user/deleteOne/order/<%= order._id %>">x</a>
+
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                    <% total=total + order.price %>
+                <%}) %>
+        </div> 
+
+        <%- include('layouts/footer.ejs') %>
+    </body>
+</html>

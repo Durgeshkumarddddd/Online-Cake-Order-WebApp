@@ -1,20 +1,21 @@
 <%- layout("./layouts/boilerplate") %>
-
-    <div class=" i-container">
+  <div class=" i-container">
       <div class="i-item i-image">   
-             <img src="https://images.unsplash.com/photo-1489790925940-daac6dcc7c7d?q=80&w=1918&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="i-img" alt="...">
+             <img src="<%= registerAdmin.shopImage %>" class="i-img" alt="...">
             <div style="gap: 1rem;"> 
-              <h5 class="card-text"> Shop Name </h5>
+              <h3 class="card-text"><%= registerAdmin.shopname %>  </h3>
             </div>
       </div>
         <div class=" i-item i-small">
-          <h3 class="card-title"> Owner : <span style="color: grey;">Durgesh kumar</span></h5>
-          <h6 class="card-title"> UserId : durgesh@123 </h6>
-          <p class="card-text"> Contact no.</p>
+          <h2>Shop Name : <%= registerAdmin.shopname %></h2>
+          <h3 class="card-title"> Owned By : <span style="color: grey;"><%= registerAdmin.name %> </span></h5>
+          <p class="card-title"> User Id : <%= registerAdmin.username %></p>
+          <p class="card-text"> Contact No.<%= registerAdmin.contactNo %></p>
         </div>
         <div class="i-item i-address text-secondary"> 
-          <p class="card-text">Address</p>
-          <p> Location </p>
+          <p class="card-text">Area/vill. : <%= registerAdmin.address %>,<%= registerAdmin.pincode %></p>
+           <p> City : <%= registerAdmin.city %></p>
+           <p>State : <%= registerAdmin.state %> , India</p>
         </div>
         <div class="i-item i-footer">
           <small class="text-body-secondary">Last updated 3 mins ago</small>

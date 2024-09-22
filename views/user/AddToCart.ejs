@@ -1,0 +1,66 @@
+<%- include('layouts/head.ejs'); %>
+
+    <body>
+        <div class="cart-container">
+            <%- include('layouts/userNav.ejs'); %>
+
+                <% let total=0 %>
+                    <div class="cart-main">
+                        <% allCarts.map(function (cart){ %>
+                            <div class="cart">
+                                <div class="cart-deatail">
+                                    <p class="p">Image</p>
+                                    <div class="cart-image"><img src="<%= cart.image %>" alt=""></div>
+                                </div>
+                                <div class="cart-detail">
+                                    <p class="p">Product</p>
+                                    <p>
+                                        <%= cart.name %>
+                                    </p>
+
+                                </div>
+                                <div class="cart-detail">
+                                    <p class="p">Price</p>
+                                    <p>$ <%= cart.price %>
+                                    </p>
+
+                                </div>
+                                <div class="cart-detail">
+                                    <p class="p">Quntity</p>
+                                    <p><span id="neg">-</span><span id="c-value">1</span><span id="pos">+</span>
+                                    </p>
+
+                                </div>
+                                <div class="cart-detail">
+                                    <p class="p">Remove</p>
+                                    <a class="rem" href="/user/delete/cart/<%= cart._id %>">x</a>
+
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <% total=total + cart.price %>
+                                <%}) %>
+
+                                    <div class="cart-fun">
+                                        <div class="cart-coupons">
+                                            <h3>Coupons</h3>
+                                            <p>Enter your coupon code if you have one.</p>
+                                            <div class="cop-code">
+                                                <input type="text" placeholder="Coupon Code">
+                                                <button>Apply Coupon</button>
+                                            </div>
+                                        </div>
+                                        <div class="cart-total">
+                                            <h3>CART TOTAL</h3>
+                                            <p>Subtotal: <span>$ <%= total.toFixed(2) %></span></p>
+                                            <p>Total: <span>$ <%= total.toFixed(2) %></span></p>
+                                            <a href="/user/allOrders" class="button">Proceed To Checkout</a>
+                                        </div>
+                                    </div>
+
+                    </div>
+        </div>
+        <%- include('layouts/footer.ejs') %>
+    </body>
+
+    </html>

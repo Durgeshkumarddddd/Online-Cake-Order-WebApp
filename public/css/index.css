@@ -163,7 +163,7 @@ height:50vh ;
     border: 1px solid red ;
 }
 
-.o-card {
+/* .o-card {
     height: 30vh;
     width: 100%;
     display: grid;
@@ -172,7 +172,23 @@ height:50vh ;
     grid-template-columns: repeat(2,1fr);
     grid-template-rows: repeat(3,1fr);
 
+} */
+.o-card {
+    padding: 12 8px;
+    /* width: 100%; */
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+    /* gap: 100px; */
 }
+/* .dp1{
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+    flex-direction: column;
+} */
+
+ /* Register admin  */
 .register_a{
 display: grid;
 grid-template-columns: repeat(2, 1fr);
@@ -187,6 +203,7 @@ grid-template-rows: repeat(2, 1fr);
 gap: 2rem;
 margin-bottom: 1.5rem;
 }
+
 /*  user symbol */
 .a-user{
 color: black;
