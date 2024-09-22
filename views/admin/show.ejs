@@ -1,0 +1,23 @@
+<%- layout('./layouts/boilerplate') %>
+
+<div class=" s-container">
+     <div class="scard">
+          <h3><%= product.name %> </h3>
+          <img src="<%= product.image %>" class="s-img">
+        </div>
+         <div class="s-card-body">
+          
+             <h4>Product Name :  <%= product.name %> </h4>
+             <h5> Product owner : <i><%= product.owner.shopname %></i>  </h5>
+             <h5> Price : &#8377; <%= product.price.toLocaleString("en-IN") %> </h5>
+             <h5> Weight : <%= product.weight %></h5>
+             <h5>Category : <%= product.category %></h5>
+             <h5>Available : <%= product.available %></h5>
+             <h5>Description :<%= product.description %></h5>
+
+         </div>
+         <div class="s-link" >
+            <a class=" offset-2 " href="/products/<%= product._id %>/edit"> Edit </a>
+            <a class=" offset-3 " href="/products/<%= product._id %>/delete"> Delete </a>
+         </div>
+</div>

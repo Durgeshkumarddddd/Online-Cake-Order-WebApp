@@ -1,0 +1,137 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+}
+body{
+    background-color: #111;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14%;
+}
+.log{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.login {
+    border-radius: 50px;
+    background-color: white;
+    border: none;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #111;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+
+}
+
+.login .sr1 {
+    border-radius: inherit;
+    padding: 10px;
+    text-align: center;
+    width: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+}
+.login .sr2 {
+    padding: 10px;
+    text-align: center;
+    width: 50%;
+    cursor: pointer;
+    border-radius: inherit;
+    background-color: rgb(38, 164, 38);
+    transition: all 0.3s ease-in-out;
+
+}
+
+h1{
+    font-size: 46px;
+    margin-bottom: 50px;
+}
+
+form{
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+}
+
+.inEmail {
+    text-align: start;
+    padding: 0;
+    margin: -28px 0 -20px -190px;
+    color: red;
+    font-size: 15px;
+    display: none;
+}
+
+.inName {
+    text-align: start;
+    padding: 0;
+    margin: -28px 0 -20px -190px;
+    color: red;
+    font-size: 15px;
+    display: none;
+}
+
+.inPassword {
+    text-align: start;
+    padding: 0;
+    margin: -28px 0 -20px 10px;
+    color: red;
+    font-size: 15px;
+    display: none;
+}
+
+input{
+    color: white;
+    border: none;
+    font-size: 16px;
+    background-color: #111;
+    outline: none;
+    border-bottom: 2px solid grey;
+    width: 100%;
+    padding: 6px;
+}
+input:focus{
+    border-bottom: 2px solid white;
+
+}
+.btn{
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    background-color: rgb(80, 210, 160);
+    cursor: pointer;
+}
+
+.match{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+}
+
+.check {
+    color: grey;
+    margin: 6px 0;
+}

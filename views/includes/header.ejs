@@ -1,0 +1,54 @@
+
+  <nav class="navbar navbar-expand-md bg-body">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><img class="n-img" src="/images/m-removebg-preview.png" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="word-spacing:0px" href="/admin/<%= CurrUser._id %>/products/new">Add New Cake </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             ManageAll
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/admin/<%= CurrUser._id %>/Products"> Manage Products</a></li>
+              <li><a class="dropdown-item" href="/admin/<%= CurrUser._id %>/manage">Manage Orders</a></li>
+              <li><a class="dropdown-item" href="/admin/<%= CurrUser._id %>/order">Update order status</a></li>
+              <li><hr class="dropdown-devider"><a href=""></a></li>
+              <li><a class="dropdown-item" href="/admin/<%= CurrUser._id %>/shiping">Shipping Location</a></li>
+            </ul>
+          </li>
+      </div>
+       <div>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" style="width: 25rem;" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+       </div>
+       <div>
+            <div class="nav-item dropdown h-user">
+              <a class=" a-user" href="#"  role="button" data-bs-toggle="dropdown" >
+                <i class="fa-solid fa-user nav-link dropdown" aria-expanded="false"></i>
+              </a>
+              <ul class="dropdown-menu ">
+                <li><a class="h-user" href="/profile">profile</a> </li> 
+                 <% if(!CurrUser) {%>
+                  <li><a class="h-user" href="/register">register</a></li> 
+                  <li> <a class="h-user" href="/login">login</a></li>
+               <%} %>
+                <% if(CurrUser) {%>
+                  <li> <a class="h-user" href="/logout">logout</a></li> 
+                <%}%>
+              </ul>
+            </div>
+       </div>
+    </div>
+  </nav>
+

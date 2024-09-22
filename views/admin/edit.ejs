@@ -1,0 +1,31 @@
+<%- layout("./layouts/boilerplate") %>
+<div class="row offset-1">
+    <h3> Edit Product Cake </h3>
+    <hr>
+    <form method="post" action="/admin/adminId/products/<%=product._id %>/edit" >
+        <div class="row">
+            <div class="mb-3 col-8">
+                <label for="name" class="form-label"> Enter name  </label>
+                <input name="product[name]" type="text" class="form-control" value="<%= product.name %>">
+            </div>
+            <div class="mb-3 col-8">
+                <label for="description" class="form-label">Write description </label>
+                <textarea name="product[description]" id="description" class="form-control" rows="4" cols="6"><%= product.description %></textarea>
+            </div>
+            <div class="mb-3 col-8">
+                <label for="image" class="form-label"> Enter Image url </label>
+                <input name="product[image]" type="text" class="form-control" value="<%= product.image %>">
+            </div>
+            <div class="mb-3 col-8">
+                <label for="price" class="form-label">Enter price of Cake</label>
+                <input name="product[price]" type="text" class="form-control" value="<%= product.price %>">
+            </div>
+            <div class="mb-3 col-8">
+                <label for="category" class="form-label"> Enter category</label>
+                <input name="product[category]" type="text" class="form-control" value="<%= product.category %>">
+            </div>
+            <br>
+        </div>
+        <button class="btn bg-success "> Update </button>
+    </form>
+</div>

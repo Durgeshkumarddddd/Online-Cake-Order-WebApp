@@ -1,0 +1,43 @@
+ <%- layout("./layouts/boilerplate") %>
+<div class="row offset-1 mt-3 mb-4">
+    <h3> Post New Cake </h3>
+    
+    <form action="/admin/<%= CurrUser._id %>/products/new" method="post"  >
+        <div class="row">
+            <div class="mb-4 col-10">
+                <label for="name" class="form-label"> Enter name  </label>
+                <input name="product[name]" type="text" class="form-control" placeholder="Enter Name" required >
+            </div>
+            <div class="mb-4 col-10">
+                <label for="image" class="form-label"> Enter Image url </label>
+                <input name="product[image]" type="text" class="form-control" placeholder="Enter Image url " required >
+            </div>
+            <div class="mb-4 " style="display: flex;" >
+                <div class="mb-3 col-6" style="margin-right: 1.5rem;">
+                    <label for="price" class="form-label">Enter price of Cake</label>
+                    <input name="product[price]" type="text" class="form-control" placeholder="Enter Price" required >
+                </div>
+                <div class="col-4">
+                    <label for="weight" class="form-label">Weight of Cake</label>
+                    <input name="product[weight]" type="Number" class="form-control" placeholder="1kg" >
+                </div>
+            </div>
+           <div class="mb-4 " style="display: flex;">
+            <div class="col-6" style="margin-right: 1.5rem;">
+                <label for="category" class="form-label"> Enter category</label>
+                <input name="product[category]" type="text" class="form-control" placeholder="chocolate" required>
+            </div>
+            <div class="col-4">
+                <label for="available" class="form-label">Available Cake</label>
+                <input type="Number" name="product[available]" class="form-control" placeholder="10">
+            </div>
+           </div>
+            <div class="mb-3 col-10">
+                <label for="description" class="form-label">Write description </label>
+                <textarea name="product[description]" id="description" class="form-control" rows="4" cols="6" required></textarea>
+            </div>
+            <br>
+        </div>
+        <button class="btn bg-success "> Add </button>
+    </form>
+</div>
