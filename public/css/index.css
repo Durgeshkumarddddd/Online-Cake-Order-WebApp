@@ -174,7 +174,7 @@ height:50vh ;
 
 } */
 .o-card {
-    padding: 12 8px;
+    padding: 12px 8px;
     /* width: 100%; */
     display: flex;
     align-items: start;
@@ -222,9 +222,9 @@ color: black;
  }
 
 /* Add to cart */
-.cart-main{
+/* .cart-main{
     padding: 40px;
- }
+ } */
  .cart{
      max-width: 80vw;
      margin: auto;

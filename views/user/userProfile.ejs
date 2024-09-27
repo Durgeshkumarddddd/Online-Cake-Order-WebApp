@@ -8,7 +8,7 @@
                 <div class="user-detail">
                     <h4>Username: <span><%= user.username %></span></h4>
                     <h4>Email ID: <%= user.email %></span></h4>
-                    <a href="/logout" class="logout">Log Out</a>
+                    <a href="/user/logout" class="logout">Log Out</a>
                 </div>
                 <div class="card">
                     <a href="/user/orders"><span><i class="fa-solid fa-dolly"></i></span> Orders <span><i
@@ -37,17 +37,19 @@
                     </div>
                     <span><i class="fa-solid fa-chevron-down e2"></i></span>
                 </div>
-
-                <div class="pay">
-                    <div class="pa1">
-                        <span><i class="fa-regular fa-pen-to-square e1"></i></span>
-                        <span>
-                            <h5>Manage Account</h5>
-                            <p>Manage your account and save address</p>
-                        </span>
+                <a href="/user/Address/update">
+                    <div class="pay">
+                        <div class="pa1">
+                            <span><i class="fa-regular fa-pen-to-square e1"></i></span>
+                            <span>
+                                <h5>Manage Account</h5>
+                                <p>Manage your account and save address</p>
+                            </span>
+                        </div>
+                        <span><i class="fa-solid fa-chevron-down e2"></i></span>
                     </div>
-                    <span><i class="fa-solid fa-chevron-down e2"></i></span>
-                </div>
+
+                </a>
 
                 <div class="pay">
                     <div class="pa1">

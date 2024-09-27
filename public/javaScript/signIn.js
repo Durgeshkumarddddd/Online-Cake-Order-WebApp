@@ -89,11 +89,11 @@ let signup = document.querySelector('.sr2')
 signup.addEventListener('click', () => {
     signup.style.backgroundColor = 'rgb(38, 164, 38)'
     login.style.backgroundColor = 'white'
-    location.href = '/register'
+    location.href = '/user/register'
 })
 
 login.addEventListener('click', () => {
     login.style.backgroundColor = 'rgb(38, 164, 38)'
     signup.style.backgroundColor = 'white'
-    location.href = '/login'
+    location.href = '/user/login'
 })

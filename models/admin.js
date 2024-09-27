@@ -25,11 +25,7 @@ const AdminSchema = new Schema({
     lowercase: true,
     match: [/.+@.+\..+/, 'Please enter a valid email address']
   },
-  password: {
-    type: String,
-    required: true
-  },
-  contactNo : {
+  contactno : {
     type : Number ,
     require:true ,
     minlength : 10 ,

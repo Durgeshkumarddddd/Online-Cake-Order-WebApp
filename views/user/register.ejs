@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp page</title>
+    <link rel="stylesheet" href="/css/signUp.css">
+</head>
+
+<body>
+
+    <div class="sign">
+        <div class="log">
+            <div class="login">
+                <div class="sr1">Log In</div>
+                <div class="sr2">Sing Up</div>
+            </div>
+        </div>
+        <h1>Create Account</h1>
+        <form action="/user/register" method="post">
+            <div class="register-container">
+                <div class="basic-details">
+                    <input type="text" placeholder="Your  full name" id="name" name="register[fullname]" required>
+                    <input type="text" placeholder="Your Username" id="name" name="register[username]" required>
+                    <div class="inName">
+                        <p>Please fill your name</p>
+                    </div>
+                    <input type="email" placeholder="E-mail Address" id="email" name="register[email]" required>
+                    <div class="inEmail">
+                        <p>Invalid E-mail Address</p>
+                    </div>
+                    <input type="password" placeholder="Create Password" id="password" name="register[password]" required>
+                    <div class="inPassword">
+                        <p>password must be fulfill all the condition given below</p>
+                    </div>
+                    <div class="match">
+                        <label for="" class="check">At least one special character</label>
+                        <label for="" class="check">At least 1 lowercase alphabetical character</label>
+                        <label for="" class="check">At least 1 uppercase alphabetical character</label>
+                        <label for="" class="check">Password must be eight characters or longer</label>
+                        <label for="" class="check">At least 1 numeric character</label>
+                    </div>
+                </div>
+                <div class="address-container">
+                    <input type="number" placeholder="Enter Phone no." name="register[number]" required>
+                    <input type="text" placeholder="Enter City" name="register[city]" required>
+                    <input type="text" placeholder="Enter State" name="register[state]" required>
+                    <input type="text" placeholder="Enter Country" name="register[country]" required>
+                    <input type="text" placeholder="Enter Famous location" name="register[famous_location]" required>
+                    <input type="number" placeholder="Enter PinCode" name="register[pincode]" required>
+                </div>
+            </div>
+            <div class="bbb">
+                <button class="btn" id="submit">SIGN UP</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="/javaScript/signIn.js"></script>
+</body>
+
+</html>

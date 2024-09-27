@@ -1,42 +1,42 @@
 <%- layout('./layouts/boilerplate') %>
 
   <h1>Manage Orders</h1>
+  <% for(let order of Allorders){ %>
   <div class="o-container">
 
     <div class="order-main">
-
+     
       <div class="cart">
         <div class="cart-deatail">
           <p class="p">Image</p>
           <div class="cart-image">
-            <img src="https://images.unsplash.com/photo-1614174486496-344ef3e9d870?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+            <img src="<%= order.image %>" alt="">
           </div>
         </div>
         <div class="cart-detail">
           <p class="p">Product</p>
           <p>
-            Chocolate Cake
+            <%= order.name %>
           </p>
 
         </div>
         <div class="cart-detail">
           <p class="p">Price</p>
           <p>
-            76887
+            <%= order.price %>
           </p>
         </div>
         <div class="cart-detail">
           <p class="p">Quntity</p>
           <p><span id="c-value">
-              1
+             <%= order.quantity %>
             </span>
           </p>
 
         </div>
         <div class="cart-detail">
-          <p class="p">Cancel order</p>
-          <a class="rem" href="">x</a>
-
+          <p class="p"> order</p>
+          <a class="rem" href="/admin/<%= order._id %>/deleteOrder">x</a>
         </div>
         <div class="line"></div>
       </div>
@@ -44,28 +44,38 @@
     </div>
     <div class="o-card">
       <div class="dp1">
-        <div class="">Order No : </div>
-        <div>Full Name : </div>
-        <div>Contact No : </div>
+        <div>Full Name : <%= order.fullname %>  </div>
+        <div>Contact No : <%= order.shippingAddress.number %></div>
       </div>
       <div class="dp1">
-        <div>Order Date: </div>
-        <div class="">Status : </div>
-        <div>Action : </div>
+        <div>Order Date:<%= order.createdAt.toString().split(" ").slice(0,5).join(" ") %> </div>
+        <div class=" dropdown">
+          Status : <%= order.status %>
+          <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Update Status </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/admin/<%= order._id %>/orderStatus?status=Delivered"> Delivered</a></li>
+            <li><a class="dropdown-item" href="/admin/<%= order._id %>/orderStatus?status=On The Way">OnThe Way</a></li>
+            <li><a class="dropdown-item" href="/admin/<%= order._id %>/orderStatus?status=Pending">Pending</a></li>
+          </ul>
+           
+      </div>
+        <!-- <div>Action : </div> -->
       </div>
     </div>
     <h4 style="padding-left: 22px;">Shipping Address: </h4>
     <div class="o-card">
       <div class="dp1">
-        <div class="">Phone no. : </div>
-        <div>Famous Location : </div>
-        <div>City : </div>
+        <div class="">Phone no. : <%= order.shippingAddress.number %></div>
+        <div>Famous Location : <%= order.shippingAddress.famous_location %> </div>
+        <div>City : <%= order.shippingAddress.city %> </div>
       </div>
       <div class="dp1">
-        <div>State: </div>
-        <div class="">Country : </div>
-        <div>Pincode : </div>
+        <div>State:<%= order.shippingAddress.state %> </div>
+        <div class="">Country : <%= order.shippingAddress.country %> </div>
+        <div>Pincode : <%= order.shippingAddress.pincode %> </div>
       </div>
-   </div>
-</div>
+    </div>
+  </div>
+  <%  } %>
  

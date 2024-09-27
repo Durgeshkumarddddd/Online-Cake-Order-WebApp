@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+}
+main{
+    padding: 20px;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('https://as1.ftcdn.net/v2/jpg/01/58/90/26/1000_F_158902697_XEO9PxPQRR4g11InapPn2yWJFs0TrO5F.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+}
+.op-main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3vw;
+}
+.op{
+    text-align: center;
+    font-size: 58px;
+    font-weight: bold;
+    background-image: url('https://images.unsplash.com/photo-1485487656106-d6aa01db3271?q=80&w=2025&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: contain;
+    background-clip: text;
+    -webkit-background-clip: text  ;
+    color: transparent;
+    margin-bottom: 66px;
+    margin-top: -14%;
+    
+}
+main a{
+    text-decoration: none;
+    padding: 6px 50px;
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+    border: 2px inset rgb(255, 93, 93);
+    border-radius: 50px;
+}
+.User{
+    background: rgb(66, 223, 66);
+    padding-inline: 64px;
+}
+.Admin{
+    background: rgb(212, 212, 212);
+    background: rgb(221, 221, 221);
+}

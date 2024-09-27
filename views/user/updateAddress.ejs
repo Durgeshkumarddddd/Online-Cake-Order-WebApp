@@ -1,0 +1,50 @@
+<%- include('layouts/head.ejs'); %>
+
+    <body>
+        <%- include('layouts/userNav.ejs'); %>
+            <div class="update-address">
+                <h2>Update Address:</h2>
+                <div class="zz">
+                <form action="/user/shippingAddress/update" method="post">
+                  <div>
+                    <label for="city">City:</label>
+                    <input type="text" id="city">
+                  </div>
+                  <div>
+                    <label for="famous_location">Famous Location: </label>
+                    <input type="text" id="famous_location">
+
+                  </div>
+                    
+                <div class="">
+                    <label for="state">State: </label>
+                    <input type="text" id="state">
+
+                </div>
+                <div class="">
+
+                    <label for="country">Country: </label>
+                    <input type="text" id="country">
+
+                </div>
+                <div class="">
+                    <label for="number">Phone No. :</label>
+                    <input type="number" id="number">
+
+                </div>
+                    
+                 <div>
+   
+                    <label for="pincode">Pincode:</label>
+                    <input type="number" id="pincode">
+                 </div>
+                    
+                   
+                 
+                </form>
+            </div>
+            </div>
+            <%- include('layouts/footer.ejs') %>
+    </body>
+
+    </html>

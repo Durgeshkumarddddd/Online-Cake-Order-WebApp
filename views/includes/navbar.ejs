@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/home">Home</a>
+            <a class="nav-link active" aria-current="page" href="/admin/home">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" style="word-spacing:0px" href="/admin/products/new">Add New Cake </a>
@@ -36,13 +36,13 @@
                 <i class="fa-solid fa-user nav-link dropdown" aria-expanded="false"></i>
               </a>
               <ul class="dropdown-menu ">
-                <li><a class="h-user" href="/profile">profile</a> </li> 
+                <li><a class="h-user" href="/admin/profile">profile</a> </li> 
                  <% if(!CurrUser) {%>
-                  <li><a class="h-user" href="/register">register</a></li> 
-                  <li> <a class="h-user" href="/login">login</a></li>
+                  <li><a class="h-user" href="/admin/register">register</a></li> 
+                  <li> <a class="h-user" href="/admin/login">login</a></li>
                <%} %>
                 <% if(CurrUser) {%>
-                  <li> <a class="h-user" href="/logout">logout</a></li> 
+                  <li> <a class="h-user" href="/admin/logout">logout</a></li> 
                 <%}%>
               </ul>
             </div>

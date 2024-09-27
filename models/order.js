@@ -5,6 +5,7 @@ const orderSchema = new mongoose.Schema({
   productId: { type: String, required: true },
   quantity: { type: Number, default: 1 },
   status: { type: String, default: 'Pending' },
+  fullname : {type : String },
   shippingAddress: {
     number: { type: Number, required: true },
     city: { type: String, required: true },
@@ -16,6 +17,14 @@ const orderSchema = new mongoose.Schema({
   name: { type: String, required: true },
   image: { type: String, required: true },
   price: { type: Number, required: true },
+  admin : {
+    type : mongoose.Schema.Types.ObjectId,
+    ref : 'admin'
+  },
+  createdAt : {
+    type : Date,
+    default : Date.now(),
+  }
 });
 
 module.exports = mongoose.model('Order', orderSchema);

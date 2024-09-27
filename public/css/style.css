@@ -330,7 +330,7 @@ footer{
     position: relative;
     width: 100%;
     /* bottom: 0%; */
-
+    
 }
 .show-container, .new-container, .index-container, .edit-container {
     min-height: 100vh;
@@ -365,4 +365,12 @@ footer{
 }
 .f-links a:hover{
     color: rgb(44, 44, 230);
+}
+ /* update-address */
+.zz{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    margin-block: 40px;
 }

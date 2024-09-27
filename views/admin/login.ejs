@@ -18,7 +18,7 @@
             </div>
         </div>
         <h1>Log In</h1>
-        <form action="/login" method="post">
+        <form action="/admin/login" method="post">
             <input type="text" placeholder="Your Username" id="name1" name="username" required>
             <input type="email" placeholder="E-mail Address" id="email1" name="email" required>
             <input type="password" placeholder="Password" id="password1" name="password" required>
@@ -35,13 +35,13 @@
         signup.addEventListener('click', () => {
             signup.style.backgroundColor = 'rgb(38, 164, 38)'
             login.style.backgroundColor = 'white'
-            location.href = '/register'
+            location.href = '/admin/register'
         })
         
         login.addEventListener('click', () => {
             login.style.backgroundColor = 'rgb(38, 164, 38)'
             signup.style.backgroundColor = 'white'
-            location.href = '/login'
+            location.href='/admin/login'
         })</script>
 </body>
 

@@ -11,11 +11,17 @@
                         <h3 class="sp">
                             <%= product.name %>
                         </h3>
+                        <h3><%= product.owner.shopname %></h3>
+                    
+                        <h3 class="sp"> <%= product.owner.name %></h3>
                         <h5 class="sp">
                             Category: <span>
                                 <%= product.category %>
                             </span>
+                            weight : <span><%= product.weight %></span>
+                            Available : <span><%= product.available %></span>
                         </h5>
+
                         <h5 class="sp">
                             Description: <span>
                                 <%= product.description %>
@@ -27,8 +33,9 @@
                     </div>
                 </main>
                 <div class="fun">
-                    <a href="/user/order/<%= product._id %>/<%= userId %>"
-                        style="background-color: rgba(14, 181, 14, 0.56);">Buy Now</a>
+                    <form method="post" action="/user/<%= userId %>/product/<%= product._id %>/admin/<%= product.owner._id %>/order"  style="background-color: rgba(14, 181, 14, 0.56);">
+                        <button> Buy Now </button>
+                    </form>
                     <a href="/user/addToCart/<%= product._id %>/<%= userId %>" class="addMe">Add to Cart</a>
                 </div>
         </div>
