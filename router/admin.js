@@ -30,7 +30,7 @@ router.post('/register', wrapAsync(async(req, res)=>{
   let newAdmin = new Admin({name, username,email,contactno,shopname,shopImage,state,city,pincode,address})
   // const password = req.body.register.password ;
   const registerAdmin = await Admin.register(newAdmin , password)
-  console.log(registerAdmin)
+
   req.login(registerAdmin, (err)=>{
     if(err){
       return next(err);
@@ -84,7 +84,6 @@ router.post('/:id/products/new',isLoggedIn, wrapAsync(async (req, res)=>{
   newAdmin.products.push(newProduct._id)
   await newProduct.save();
   await newAdmin.save();
-  console.log(newAdmin);
   req.flash('success','new product added')
   res.redirect('/admin/Products');    
 
@@ -102,7 +101,7 @@ router.get('/:id/products/:productId/delete',isLoggedIn, wrapAsync(async(req,res
   let {id, productId} = req.params ;
   await Product.findByIdAndDelete(productId);
   let newAdmin = await Admin.findByIdAndUpdate(id, {$pull : {products : productId}})
-  console.log(newAdmin);
+
   req.flash('success', ' product deleted ')
   res.redirect('/admin/products')
 }))

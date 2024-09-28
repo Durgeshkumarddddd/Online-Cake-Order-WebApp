@@ -1,19 +1,19 @@
 
   <nav class="navbar navbar-expand-md bg-body">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/home"><img class="n-img" src="/images/m-removebg-preview.png" alt=""></a>
+      <a class="navbar-brand" ><img class="n-img" src="/images/m-removebg-preview.png" alt=""></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+          <li class="nav-item ">
             <a class="nav-link active" aria-current="page" href="/admin/home">Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item ">
             <a class="nav-link" style="word-spacing:0px" href="/admin/products/new">Add New Cake </a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
              ManageAll
             </a>
@@ -23,30 +23,32 @@
               
             </ul>
           </li>
+          </ul>
+          <div class=" ">
+            <form class=" nav-items d-flex " role="search">
+              <input class="form-control me-2"  type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+           </div>
+           <div>
+                <div class="nav-items dropdown h-user">
+                  <a class=" a-user" href="#"  role="button" data-bs-toggle="dropdown" >
+                    <i class="fa-solid fa-user nav-link dropdown" aria-expanded="false"></i>
+                  </a>
+                  <ul class="dropdown-menu ">
+                    <li><a class="h-user" href="/admin/profile">profile</a> </li> 
+                     <% if(!CurrUser) {%>
+                      <li><a class="h-user" href="/admin/register">register</a></li> 
+                      <li> <a class="h-user" href="/admin/login">login</a></li>
+                   <%} %>
+                    <% if(CurrUser) {%>
+                      <li> <a class="h-user" href="/admin/logout">logout</a></li> 
+                    <%}%>
+                  </ul>
+                </div>
+           </div>
       </div>
-       <div>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" style="width: 25rem;" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-       </div>
-       <div>
-            <div class="nav-item dropdown h-user">
-              <a class=" a-user" href="#"  role="button" data-bs-toggle="dropdown" >
-                <i class="fa-solid fa-user nav-link dropdown" aria-expanded="false"></i>
-              </a>
-              <ul class="dropdown-menu ">
-                <li><a class="h-user" href="/admin/profile">profile</a> </li> 
-                 <% if(!CurrUser) {%>
-                  <li><a class="h-user" href="/admin/register">register</a></li> 
-                  <li> <a class="h-user" href="/admin/login">login</a></li>
-               <%} %>
-                <% if(CurrUser) {%>
-                  <li> <a class="h-user" href="/admin/logout">logout</a></li> 
-                <%}%>
-              </ul>
-            </div>
-       </div>
+    
     </div>
   </nav>
 
