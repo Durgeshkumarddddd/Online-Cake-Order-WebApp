@@ -28,13 +28,13 @@
                             </span>
                         </h5>
                         <h4 class="sp">
-                            $ <%= product.price %>
+                            &#8377; <%= product.price %>
                         </h4>
                     </div>
                 </main>
                 <div class="fun">
                     <form method="post" action="/user/<%= userId %>/product/<%= product._id %>/admin/<%= product.owner._id %>/order"  style="background-color: rgba(14, 181, 14, 0.56);">
-                        <button> Buy Now </button>
+                        <button class="ttb"> Buy Now </button>
                     </form>
                     <a href="/user/addToCart/<%= product._id %>/<%= userId %>" class="addMe">Add to Cart</a>
                 </div>

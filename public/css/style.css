@@ -170,6 +170,15 @@ h5, .user-detail span{
     border-radius: 6px;
     margin-inline: 6vw;
 }
+.ttb{
+    padding: 6px 12px;
+    border: 1px solid black;
+    background-color: rgba(246, 224, 29, 0.673);
+    font-weight: 600;
+    font-size: 22px;
+    border-radius: 6px;
+    margin-inline: 6vw;
+}
 
 .main{
     padding: 42px 8%;
@@ -332,7 +341,7 @@ footer{
     /* bottom: 0%; */
     
 }
-.show-container, .new-container, .index-container, .edit-container {
+.show-container, .new-container, .index-container, .edit-container, .update-address {
     min-height: 100vh;
 }
 .f-cotainer {
@@ -373,4 +382,7 @@ footer{
     align-items: center;
     flex-direction: column; 
     margin-block: 40px;
+}
+.mb1{
+    margin-block: 20px;
 }

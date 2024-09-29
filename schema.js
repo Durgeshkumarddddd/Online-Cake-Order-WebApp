@@ -1,5 +1,6 @@
 const Joi = require('joi')
-
+const admin = require('./models/User')
+const User = require('./models/admin')
 module.exports.AdminSchema = Joi.object({
     admin : Joi.object({
         name : Joi.string().required(),

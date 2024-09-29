@@ -8,14 +8,11 @@ const Admin = require('./models/admin')
 const Product = require('./models/product')
 const session = require('express-session')
 const passport = require('passport')
-const LocalStrategy = require('passport-local')
+const LocalStrategy = require('passport-local').Strategy
 const flash = require('connect-flash');
 const User = require('./models/User');
 const adminRoute = require('./router/admin')
 const userRoute = require('./router/user')
-const bodyParser = require('body-parser');
-
-app.use(bodyParser.json());
 
 const ExpressError = require('./ErrorHandler/ExpressError');
 
@@ -41,16 +38,46 @@ app.use(session({
     httpOnly: true    
   }
 }))
+
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(Admin.authenticate()));
-passport.serializeUser(Admin.serializeUser());
-passport.deserializeUser(Admin.deserializeUser()); 
 
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+
+// Admin Strategy
+passport.use('admin-local', new LocalStrategy(Admin.authenticate()));
+
+// User Strategy
+passport.use('user-local', new LocalStrategy(User.authenticate()));
+
+// Serialize User
+passport.serializeUser((user, done) => {
+  const userType = user instanceof Admin ? 'Admin' : 'User';
+  done(null, { id: user.id, type: userType });
+});
+
+// Deserialize User
+// Deserialize User
+passport.deserializeUser(async (obj, done) => {
+  try {
+    let user;
+    if (obj.type === 'Admin') {
+      user = await Admin.findById(obj.id);
+    } else if (obj.type === 'User') {
+      user = await User.findById(obj.id);
+    } else {
+      throw new Error('No user type specified');
+    }
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    done(null, user);
+  } catch (err) {
+    done(err, null);
+  }
+});
 
 app.use((req, res, next)=>{
   res.locals.success = req.flash("success")  

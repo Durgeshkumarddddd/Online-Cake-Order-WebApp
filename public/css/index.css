@@ -318,3 +318,41 @@ color: black;
      text-decoration-line: underline;
  }
  */
+
+ /* footer  */
+ .f-cotainer {
+    padding-block: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: rgb(220, 220, 220);
+}
+.f-icons{
+    margin-bottom: 6px;
+}
+.f-icons i {
+    font-size: 24px;
+    margin-inline: 10px;
+}
+.f-icons i:hover{
+    color: rgb(46, 46, 234);
+}
+#in:hover {
+    color: rgb(255, 83, 83);
+}
+.f-links{
+    margin-top: 6px;
+}
+.f-links a{
+    text-decoration: none;
+    color: black;
+    margin-inline: 22px;
+}
+.f-links a:hover{
+    color: rgb(44, 44, 230);
+}
+
+.mm{
+    min-height: calc(100vh - 82px);
+}

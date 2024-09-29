@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const User = require('../models/User')
 const Product = require('../models/product')
 const Admin = require('../models/admin')
 const Order = require('../models/Order');
@@ -9,49 +8,40 @@ const { userInfo } = require('os');
 const Cart = require('../models/Cart');
 // const mongooseConnection = require('../config/mongoose')
 const passport = require('passport')
+const ExpressError = require('../ErrorHandler/ExpressError');
+
 
 const {isOwner, isLoggedIn} = require('../middleware')
 const wrapAsync = require('../ErrorHandler/wrapAsync')
-const {UserSchema} = require('../schema')
+const User = require('../models/User')
 
-const validateUser = (req, res, next)=>{
-  let {error} =  UserSchema.validate(req.body)
-    if(error){
-      let ErrMsg = error.details.map(e=> e.message).join(",")
-      throw new ExpressError(400 , ErrMsg)
-    }
-   else {
-    next(); 
-   }
-}
 
-  // update shipping address
-  router.get('/Address/update', async (req, res) => {
-    console.log('hii');
+
+// update shipping address
+router.get('/Address/update', async (req, res) => {
     
     let [userId] = req.flash('userId')
     req.flash('userId', userId)
-    let user = await User.findById(userId);
-    console.log(user);
-    res.render('user/updateAddress', {user})
+    let newuser = await User.findById(userId);
+    res.render('user/updateAddress', {newuser})
   })
   
 // Register
 router.get('/register', (req, res) => {
     res.render('user/register');
   })
-  router.post('/register',validateUser, async (req, res, next) => {
+  router.post('/register', async (req, res, next) => {
   
     let newUser = new User(req.body.register)
     const password = req.body.register.password;
-    const registedUser = await User.register(newUser, password)
+    const registerUser = await User.register(newUser, password)
     // console.log(registedUser)
-    req.login(registedUser, (err) => {
+    req.login(registerUser, (err) => {
       if (err) {
         return next(err);
       }
       req.flash("success", "Registration Successfull Welcome!");
-      res.redirect('/user/login')
+      res.redirect('/user/user')
   
     })
   })
@@ -61,15 +51,14 @@ router.get('/register', (req, res) => {
     res.render('user/logIn')
   })
   
-  router.post('/login', passport.authenticate("local", {
+  router.post('/login', passport.authenticate("user-local", {
     failureRedirect: '/user/login',
     failureFlash: true,
   }),
-    async (req, res) => {
+    async(req, res) => {
       req.flash("success", "Welcome back to Online cake order login user");
       let { email } = req.body;
       // console.log(email);
-  
       let logUser = await User.findOne({ email: email })
       req.flash('userId', logUser._id)
       res.redirect('/user')
@@ -85,7 +74,6 @@ router.get('/register', (req, res) => {
       res.redirect('/user/login')
     })
   })
-  
   
   // filter by price route
   router.get('/filter/range', async (req, res) => {
@@ -233,11 +221,11 @@ router.get('/register', (req, res) => {
     let [userId] = message
     req.flash('userId', userId)
     const orders = await Order.find()
-    if (orders) {
+    if (orders.length != 0) {
       res.render('user/userOrder', { orders })
     }
     else {
-      res.send('Not found') 
+      res.render('user/errorPages/orderError')
     }
   })
   

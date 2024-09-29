@@ -6,37 +6,37 @@
                 <h2>Update Address:</h2>
                 <div class="zz">
                 <form action="/user/shippingAddress/update" method="post">
-                  <div>
+                  <div class="mb1">
                     <label for="city">City:</label>
-                    <input type="text" id="city">
+                    <input type="text" id="city" value="<%= user.city %>">
                   </div>
-                  <div>
+                  <div class="mb1">
                     <label for="famous_location">Famous Location: </label>
-                    <input type="text" id="famous_location">
+                    <input type="text" id="famous_location" value="<%= user.famous_location %>">
 
                   </div>
                     
-                <div class="">
+                <div class="mb1">
                     <label for="state">State: </label>
-                    <input type="text" id="state">
+                    <input type="text" id="state" value="<%= user.state %>">
 
                 </div>
-                <div class="">
+                <div class="mb1">
 
                     <label for="country">Country: </label>
-                    <input type="text" id="country">
+                    <input type="text" id="country" value="<%= user.country %>">
 
                 </div>
-                <div class="">
+                <div class="mb1">
                     <label for="number">Phone No. :</label>
-                    <input type="number" id="number">
+                    <input type="number" id="number" value="<%= user.number %>">
 
                 </div>
                     
-                 <div>
+                 <div class="mb1">
    
                     <label for="pincode">Pincode:</label>
-                    <input type="number" id="pincode">
+                    <input type="number" id="pincode" value="<%= user.pincode %>">
                  </div>
                     
                    

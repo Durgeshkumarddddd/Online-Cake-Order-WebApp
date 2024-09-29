@@ -1,14 +1,25 @@
 const Admin = require('./models/admin')
 
-module.exports.isLoggedIn = (req, res, next)=>{
-          
-    if(!req.isAuthenticated()){
-        req.session.redirectUrl = req.originalUrl ;
-        req.flash("error", "You must be loggedIn")
-     return  res.redirect('/admin/login')
+// Middleware to Check Admin Authentication
+module.exports.isAdminAuthenticated = (req, res, next)=> {
+    if (req.isAuthenticated() && req.user instanceof Admin) {
+      return next();
     }
-    next()
-}
+    req.flash('error', 'Please log in as Admin to access this page.');
+    res.redirect('/admin/login');
+  }
+  
+  // Middleware to Check User Authentication
+ module.exports.isUserAuthenticated = (req, res, next)=>{
+    if (req.isAuthenticated() && req.user instanceof User) {
+      return next();
+    }
+    req.flash('error', 'Please log in to access this page.');
+    res.redirect('/login');
+  }
+  
+
+
 module.exports.isOwner = async(req, res, next)=>{
     let {id} = req.params 
     try{
