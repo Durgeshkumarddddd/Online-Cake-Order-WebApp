@@ -2,49 +2,49 @@
 
     <body>
         <%- include('layouts/userNav.ejs'); %>
-            <div class="update-address">
-                <h2>Update Address:</h2>
-                <div class="zz">
+            <div class="update-address row ">
+              <div class="">
+
+                <h2 class="mt-4" style="margin-left: 60px;">Update Address:</h2>
+                <div class="col-7 offset-2">
                 <form action="/user/shippingAddress/update" method="post">
                   <div class="mb1">
-                    <label for="city">City:</label>
-                    <input type="text" id="city" value="<%= user.city %>">
+                    <label class="form-label" for="city">City:</label>
+                    <input name="router[city]" class="form-control" type="text" id="city" value="<%= user.city %>">
                   </div>
                   <div class="mb1">
-                    <label for="famous_location">Famous Location: </label>
-                    <input type="text" id="famous_location" value="<%= user.famous_location %>">
-
+                    <label class="form-label" for="famous_location">Famous Location: </label>
+                    <input name="router[famouse_location]" class="form-control" type="text" id="famous_location" value="<%= user.famous_location %>">
                   </div>
                     
                 <div class="mb1">
-                    <label for="state">State: </label>
-                    <input type="text" id="state" value="<%= user.state %>">
+                    <label class="form-label" for="state">State: </label>
+                    <input name="router[state]" class="form-control" type="text" id="state" value="<%= user.state %>">
 
                 </div>
                 <div class="mb1">
 
-                    <label for="country">Country: </label>
-                    <input type="text" id="country" value="<%= user.country %>">
+                    <label class="form-label" for="country">Country: </label>
+                    <input name="router[country]" class="form-control" type="text" id="country" value="<%= user.country %>">
 
                 </div>
                 <div class="mb1">
-                    <label for="number">Phone No. :</label>
-                    <input type="number" id="number" value="<%= user.number %>">
+                    <label class="form-label" for="number">Phone No. :</label>
+                    <input name="router[number]" class="form-control" type="number" id="number" value="<%= user.number %>">
 
                 </div>
                     
                  <div class="mb1">
    
-                    <label for="pincode">Pincode:</label>
-                    <input type="number" id="pincode" value="<%= user.pincode %>">
+                    <label class="form-label" for="pincode">Pincode:</label>
+                    <input name="router[pincode]" class="form-control" type="number" id="pincode" value="<%= user.pincode %>">
                  </div>
-                    
-                   
-                 
-                </form>
+                 <button class="btn btn-outline-dark col-1 ">update</button>
+              </form>
             </div>
+          </div>
             </div>
             <%- include('layouts/footer.ejs') %>
     </body>
 
-    </html>
+</html>

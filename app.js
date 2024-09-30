@@ -6,11 +6,11 @@ const path = require('path')
 const ejsMate = require('ejs-mate')
 const Admin = require('./models/admin')
 const Product = require('./models/product')
+const User = require('./models/User')
 const session = require('express-session')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const flash = require('connect-flash');
-const User = require('./models/User');
 const adminRoute = require('./router/admin')
 const userRoute = require('./router/user')
 
@@ -43,7 +43,6 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // Admin Strategy
 passport.use('admin-local', new LocalStrategy(Admin.authenticate()));
 
@@ -56,7 +55,6 @@ passport.serializeUser((user, done) => {
   done(null, { id: user.id, type: userType });
 });
 
-// Deserialize User
 // Deserialize User
 passport.deserializeUser(async (obj, done) => {
   try {

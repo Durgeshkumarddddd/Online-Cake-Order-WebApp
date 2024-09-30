@@ -6,25 +6,45 @@ const Order = require('../models/Order');
 const cartModel = require('../models/Cart');
 const { userInfo } = require('os');
 const Cart = require('../models/Cart');
-// const mongooseConnection = require('../config/mongoose')
 const passport = require('passport')
 const ExpressError = require('../ErrorHandler/ExpressError');
-
-
-const {isOwner, isLoggedIn} = require('../middleware')
+const {isUserAuthenticated } = require('../middleware')
 const wrapAsync = require('../ErrorHandler/wrapAsync')
 const User = require('../models/User')
+const {UserSchema} = require('../schema');
 
+
+const validateUser = (req, res, next)=>{
+  let {error} = UserSchema.validate(req.body)
+    if(error){
+      let ErrMsg = error.details.map(e=> e.message).join(",")
+      throw new ExpressError(400 , ErrMsg)
+    }
+   else {
+    next(); 
+   }
+}
 
 
 // update shipping address
-router.get('/Address/update', async (req, res) => {
+router.get('/Address/update',isUserAuthenticated, async (req, res) => {
     
     let [userId] = req.flash('userId')
     req.flash('userId', userId)
-    let newuser = await User.findById(userId);
-    res.render('user/updateAddress', {newuser})
+    let user = await User.findById(userId);
+    res.render('user/updateAddress', {user})
   })
+
+
+// Update Shipping address submit
+router.post('/shippingAddress/update',isUserAuthenticated,  async(req, res)=>{
+    
+    let Id = req.user._id
+    await User.findByIdAndUpdate(Id, req.body.router)
+    req.flash('success',"Successfully updated")
+    res.redirect('/user/profile')
+}) 
+
   
 // Register
 router.get('/register', (req, res) => {
@@ -35,13 +55,12 @@ router.get('/register', (req, res) => {
     let newUser = new User(req.body.register)
     const password = req.body.register.password;
     const registerUser = await User.register(newUser, password)
-    // console.log(registedUser)
     req.login(registerUser, (err) => {
       if (err) {
         return next(err);
       }
       req.flash("success", "Registration Successfull Welcome!");
-      res.redirect('/user/user')
+      res.redirect('/user')
   
     })
   })
@@ -98,7 +117,7 @@ router.get('/register', (req, res) => {
   })
   
   // user profile route
-  router.get('/profile', async (req, res) => {
+  router.get('/profile',isUserAuthenticated, async (req, res) => {
     try{
       let message = req.flash('userId')
       let [userId] = message;
@@ -130,7 +149,7 @@ router.get('/register', (req, res) => {
   })
   
   // user-show route
-  router.get('/:user_id/:productId', async (req, res) => {
+  router.get('/:user_id/:productId',isUserAuthenticated, async (req, res) => {
     try{
       let id = req.params.productId;
       let userId = req.params.user_id;
@@ -145,7 +164,7 @@ router.get('/register', (req, res) => {
 
 
   // cart data route
-  router.get('/addToCart/:productId/:userId', async (req, res) => {
+  router.get('/addToCart/:productId/:userId',isUserAuthenticated, async (req, res) => {
     let { productId, userId } = req.params;
     let cartProduct = await Product.findById(productId)
     let curUser = await User.findById(userId);
@@ -166,7 +185,7 @@ router.get('/register', (req, res) => {
   })
   
   // add to cart route 
-  router.get('/AddToCart', async (req, res) => {
+  router.get('/AddToCart',isUserAuthenticated, async (req, res) => {
     let message = req.flash('userId')
     let [userId] = message
     req.flash('userId', userId)
@@ -181,14 +200,14 @@ router.get('/register', (req, res) => {
   
   })
   
-  router.get('/delete/cart/:cartId', async (req, res) => {
+  router.get('/delete/cart/:cartId',isUserAuthenticated, async (req, res) => {
     let { cartId } = req.params;
     await cartModel.deleteOne({ _id: cartId })
     res.redirect('/user/AddToCart')
   })
   
   // single order route
-  router.post('/:userId/product/:productId/admin/:adminId/order', async (req, res) => {
+  router.post('/:userId/product/:productId/admin/:adminId/order',isUserAuthenticated, async (req, res) => {
     const { productId, userId,adminId } = req.params;
     let curUser = await User.findById(userId);
     let curProduct = await Product.findById(productId);
@@ -241,7 +260,7 @@ router.get('/register', (req, res) => {
   })
   
   //multiple order at a time - route
-  router.get('/allOrders', async (req, res) => {
+  router.get('/allOrders',isUserAuthenticated, async (req, res) => {
     let message = req.flash('userId')
     let [userId] = message
     req.flash('userId', userId)

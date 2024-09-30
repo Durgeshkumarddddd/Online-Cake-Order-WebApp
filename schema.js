@@ -1,6 +1,6 @@
 const Joi = require('joi')
-const admin = require('./models/User')
-const User = require('./models/admin')
+const admin = require('./models/admin')
+
 module.exports.AdminSchema = Joi.object({
     admin : Joi.object({
         name : Joi.string().required(),
@@ -15,7 +15,6 @@ module.exports.AdminSchema = Joi.object({
 
     }).required()
 })
-
 
 module.exports.UserSchema = Joi.object({
         User : Joi.object({
